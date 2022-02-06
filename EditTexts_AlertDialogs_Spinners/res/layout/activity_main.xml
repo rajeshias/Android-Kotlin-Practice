@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btnDialog1"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Add Person Dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDialog2"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Choose Gender Dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDialog1" />
+
+    <Button
+        android:id="@+id/btnDialog3"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Choose Multiple Product Dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDialog2" />
+
+    <Spinner
+        android:id="@+id/spYear"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:entries="@array/year"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDialog3" />
+
+    <EditText
+        android:id="@+id/etAddToSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:hint="Add entries here"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddToSpinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spYear" />
+
+    <Spinner
+        android:id="@+id/spCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnAddToSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/spYear" />
+
+    <Button
+        android:id="@+id/btnAddToSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="Add"
+        app:layout_constraintEnd_toStartOf="@+id/spCustom"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/etAddToSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/spYear" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
