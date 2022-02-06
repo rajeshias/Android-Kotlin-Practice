@@ -1,38 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+package com.example.tutorials
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTodo"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/etTodoInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 
-    <EditText
-        android:id="@+id/etTodoInput"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:hint="Add ToDo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddTodo"
-        app:layout_constraintStart_toStartOf="parent" />
+class MainActivity : AppCompatActivity() {
 
-    <Button
-        android:id="@+id/btnAddTodo"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
+        val toDoList = mutableListOf(
+            ToDo("Eat Lunch", false),
+            ToDo("Practice Android Recycle Viewer", true),
+            ToDo("Walk Bellu", true),
+            ToDo("Read Book", false),
+            ToDo("Go to Sleep", false)
+        )
+        val todoAdapter = ToDoAdapter(toDoList)
+        rvTodo.adapter = todoAdapter
+        rvTodo.layoutManager = LinearLayoutManager(this)
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        btnAddTodo.setOnClickListener {
+            val newTodo = ToDo(etTodoInput.text.toString(), false)
+            toDoList.add(newTodo)
+            todoAdapter.notifyItemInserted(toDoList.size - 1)
+        }
+    }
+}
