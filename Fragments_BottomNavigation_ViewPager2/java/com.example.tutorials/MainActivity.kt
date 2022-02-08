@@ -2,7 +2,10 @@ package com.example.tutorials
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -31,6 +34,24 @@ class MainActivity : AppCompatActivity() {
 //        vpImageScroll.beginFakeDrag()
 //        vpImageScroll.fakeDragBy(-4f)
 //        vpImageScroll.endFakeDrag()
+
+        TabLayoutMediator(tlTab, vpImageScroll) { tab, position ->
+            tab.text = position.toString()
+        }.attach()
+
+        tlTab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                Toast.makeText(this@MainActivity, "You chose ${tab?.text}", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                Toast.makeText(this@MainActivity, "You just left ${tab?.text}", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                Toast.makeText(this@MainActivity, "${tab?.text}?. But Why?", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
