@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tutorials</string>
+    <string name="draw_open">Side Menu Open</string>
+    <string name="draw_close">Side Menu Close</string>
+</resources>
